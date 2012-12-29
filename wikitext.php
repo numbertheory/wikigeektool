@@ -13,7 +13,15 @@ $page_id = array_keys($result['query']['pages']);
 $page_text = $result['query']['pages'][$page_id[0]]['revisions'][0]['*'];
 //echo substr($page_text, 0, strrpos($page_text, '([['));
 $f_text = substr($page_text, 0, strrpos($page_text, '([['));
-//preg_match_all('#\\[\\[(.*?)\\]\\]#', $f_text, $matches, PREG_SET_ORDER);
+
+//Take out "DIV" elements out of $f_text (leading image cannot be displayed with this script)
+$lead_image = strpos($f_text, '</div>');
+if ($lead_image != 0)
+{
+$f_text = substr($f_text, ($lead_image + 7), strlen($f_text));
+}
+  
+//Strip out all links  
   preg_match_all('#\\[\\[(.*?)\\]\\]#', $f_text, $matches, PREG_SET_ORDER);
 for($i = 0; $i < count($matches); ++$i) {
 	//print_r($matches[$i]);
