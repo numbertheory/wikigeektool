@@ -23,12 +23,20 @@ $f_text = substr($f_text, ($lead_image + 7), strlen($f_text));
   
 //Strip out all links  
   preg_match_all('#\\[\\[(.*?)\\]\\]#', $f_text, $matches, PREG_SET_ORDER);
+  preg_match_all('#{(.*?)}}#', $f_text, $b_matches, PREG_SET_ORDER);
+
 for($i = 0; $i < count($matches); ++$i) {
-	//print_r($matches[$i]);
 	$offset = strpos($matches[$i][1], '|');
 	if ($offset == null){$offset = 0;} else {$offset = ($offset + 1);}
 	$f_text = str_replace($matches[$i][0], substr($matches[$i][1], $offset), $f_text);
 }
+
+for($i = 0; $i < count($b_matches); ++$i) {
+	$offset = strpos($b_matches[$i][1], '|');
+	if ($offset == null){$offset = 0;} else {$offset = ($offset + 1);}
+	$f_text = str_replace($b_matches[$i][0], substr($b_matches[$i][1], $offset), $f_text);
+}
+
 $f_text = str_replace("'''", null, $f_text);
 $f_text = str_replace("''", null, $f_text);
 echo $f_text;
