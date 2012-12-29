@@ -9,3 +9,12 @@ Requirements:
 
 * Geek Tool installed: https://itunes.apple.com/us/app/geektool/id456877552?mt=12
 * PHP installed: Built and tested with PHP 5.3.15, but the exact version should not matter too much.
+
+Installation notes:
+
+Set up two Shell scripts in Geek Tool, one for wikititle.php and one for wikitext.php (examples below, be mindful of the path and try in terminal first so you can be sure you get the texts.).  It's only one article a day, so you can set the interval to 86400 seconds.
+
+php ~/wikigeektool/wiktitle.php
+php ~/wikigeektool/wikitext.php
+
+Then, arrange the text however you want.
