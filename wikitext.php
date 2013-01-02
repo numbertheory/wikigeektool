@@ -11,8 +11,8 @@ curl_close($ch);
 $page_id = array_keys($result['query']['pages']);
 //echo $page_id[0];
 $page_text = $result['query']['pages'][$page_id[0]]['revisions'][0]['*'];
-//echo substr($page_text, 0, strrpos($page_text, '([['));
-$f_text = substr($page_text, 0, strrpos($page_text, '([['));
+//echo substr($page_text, 0, strrpos($page_text, '{{TFAFULL'));
+$f_text = substr($page_text, 0, strrpos($page_text, '{{TFAFULL'));
 
 //Take out "DIV" elements out of $f_text (leading image cannot be displayed with this script)
 $lead_image = strpos($f_text, '</div>');
